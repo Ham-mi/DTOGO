@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">DTOGO</string>
+    <string name="d_day">D-DAY</string>
+    <string name="todo">TODO</string>
+    <string name="goal">목표달성</string>
+</resources>
