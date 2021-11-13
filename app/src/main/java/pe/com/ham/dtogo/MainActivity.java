@@ -12,25 +12,12 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    View view;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         getSupportActionBar().hide();
-
-        view = findViewById(R.id.view);
-
-        view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(getApplicationContext(), "클릭됨", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-        );
 
     }
 
