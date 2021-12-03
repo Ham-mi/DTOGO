@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -16,9 +17,13 @@ import android.widget.Toast;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements UsingDB{
 
     Toolbar toolbar;
+
+    private SQLiteDatabase db;
+    private DBHelper dbHelper;
+
 
     Fragment1 fragment1;
     Fragment2 fragment2;
@@ -52,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
         tab2 = findViewById(R.id.tab2);
         tab3 = findViewById(R.id.tab3);
 
+        dbHelper = new DBHelper(this);
+        db = dbHelper.getReadableDatabase();
+
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
 
 
@@ -79,6 +87,12 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void item1_select(String arg0, String arg1, String arg2, String table) {
+        db = dbHelper.getWritableDatabase();
+        
     }
 
 }
