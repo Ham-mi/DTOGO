@@ -27,6 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
                  "\"date\" VARCHAR(8) NOT NULL DEFAULT \"00000000\",\n" +
                  "\"back_color\" VARCHAR(7) NOT NULL DEFAULT \"#5D88BB\",\n" +
                  "\"text_color\" VARCHAR(7) NOT NULL DEFAULT \"#FFFFFF\",\n" +
+                 "\"icon\"	VARCHAR(50) NOT NULL DEFAULT \"baseline_local_florist_24\",\n" +
                  "\"use\" INTEGER NOT NULL DEFAULT 0 \n" +
                  ");";
         db.execSQL(sql); // Dday table

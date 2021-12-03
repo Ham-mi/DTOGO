@@ -3,6 +3,7 @@ package pe.com.ham.dtogo;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 
 import android.database.sqlite.SQLiteDatabase;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements UsingDB{
     TabItem tab2;
     TabItem tab3;
 
+    CoordinatorLayout coordinatorLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +60,12 @@ public class MainActivity extends AppCompatActivity implements UsingDB{
         tab2 = findViewById(R.id.tab2);
         tab3 = findViewById(R.id.tab3);
 
+        coordinatorLayout = findViewById(R.id.coorLayout);
+
         dbHelper = new DBHelper(this);
         db = dbHelper.getReadableDatabase();
 
+        coordinatorLayout.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
 
 
@@ -90,9 +96,22 @@ public class MainActivity extends AppCompatActivity implements UsingDB{
     }
 
     @Override
-    public void item1_select(String arg0, String arg1, String arg2, String table) {
-        db = dbHelper.getWritableDatabase();
-        
+    public void item1_select() {
+
     }
 
+    @Override
+    public void item1_insert() {
+
+    }
+
+    @Override
+    public void item1_delete() {
+
+    }
+
+    @Override
+    public void item1_update() {
+
+    }
 }
