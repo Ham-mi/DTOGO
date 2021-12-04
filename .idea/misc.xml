@@ -15,7 +15,9 @@
         <entry key="..\:/github/DTOGO/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22083333333333333" />
         <entry key="..\:/github/DTOGO/app/src/main/res/drawable/baseline_add_20.xml" value="0.22083333333333333" />
         <entry key="..\:/github/DTOGO/app/src/main/res/drawable/baseline_add_24.xml" value="0.22083333333333333" />
+        <entry key="..\:/github/DTOGO/app/src/main/res/drawable/baseline_check_24.xml" value="0.38229166666666664" />
         <entry key="..\:/github/DTOGO/app/src/main/res/drawable/baseline_chevron_right_24.xml" value="0.38229166666666664" />
+        <entry key="..\:/github/DTOGO/app/src/main/res/drawable/baseline_close_24.xml" value="0.38229166666666664" />
         <entry key="..\:/github/DTOGO/app/src/main/res/drawable/baseline_crop_square_24.xml" value="0.38229166666666664" />
         <entry key="..\:/github/DTOGO/app/src/main/res/drawable/baseline_event_available_24.xml" value="0.22083333333333333" />
         <entry key="..\:/github/DTOGO/app/src/main/res/drawable/baseline_local_florist_24.xml" value="0.22083333333333333" />
@@ -31,10 +33,10 @@
         <entry key="..\:/github/DTOGO/app/src/main/res/drawable/view_corner2.xml" value="0.22083333333333333" />
         <entry key="..\:/github/DTOGO/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/github/DTOGO/app/src/main/res/layout/fragment1.xml" value="0.2046875" />
-        <entry key="..\:/github/DTOGO/app/src/main/res/layout/fragment2.xml" value="0.36614583333333334" />
+        <entry key="..\:/github/DTOGO/app/src/main/res/layout/fragment2.xml" value="0.1" />
         <entry key="..\:/github/DTOGO/app/src/main/res/layout/recyclerview_item.xml" value="0.36614583333333334" />
         <entry key="..\:/github/DTOGO/app/src/main/res/layout/recyclerview_item1.xml" value="0.1778115501519757" />
-        <entry key="..\:/github/DTOGO/app/src/main/res/layout/recyclerview_item2.xml" value="0.33" />
+        <entry key="..\:/github/DTOGO/app/src/main/res/layout/recyclerview_item2.xml" value="0.9" />
       </map>
     </option>
   </component>

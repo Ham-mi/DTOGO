@@ -3,8 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:orientation="vertical">
+    android:gravity="left"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingTop="5dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="5dp">
 
 
     <LinearLayout
@@ -32,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="+"
-            android:textColor="#000000"
+            android:textColor="@color/colorBlue"
             android:textSize="32dp" />
 
         <ImageView
@@ -40,13 +44,14 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             app:srcCompat="@drawable/baseline_chevron_right_24"
-            app:tint="#591F1F" />
+            app:tint="@color/colorBlue" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginTop="5dp"
         android:background="#000000" />
 
 
