@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/fragment2_state_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             app:srcCompat="@drawable/baseline_crop_square_24"
             app:tint="@color/colorBlue" />
 
@@ -37,8 +37,8 @@
 
         <ImageView
             android:id="@+id/fragment2_next_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             app:srcCompat="@drawable/baseline_chevron_right_24"
             app:tint="#591F1F" />
     </LinearLayout>
