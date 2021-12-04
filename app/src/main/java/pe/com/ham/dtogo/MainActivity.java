@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
+import pe.com.ham.dtogo.dao.AppDatabase;
+
 public class MainActivity extends AppCompatActivity implements UsingDB{
 
     Toolbar toolbar;
@@ -60,12 +62,15 @@ public class MainActivity extends AppCompatActivity implements UsingDB{
         tab2 = findViewById(R.id.tab2);
         tab3 = findViewById(R.id.tab3);
 
-        coordinatorLayout = findViewById(R.id.coorLayout);
+//        coordinatorLayout = findViewById(R.id.coorLayout);
 
-        dbHelper = new DBHelper(this);
-        db = dbHelper.getReadableDatabase();
+//        dbHelper = new DBHelper(this);
+//        db = dbHelper.getReadableDatabase();
 
-        coordinatorLayout.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+//        coordinatorLayout.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+
+
+
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
 
 
