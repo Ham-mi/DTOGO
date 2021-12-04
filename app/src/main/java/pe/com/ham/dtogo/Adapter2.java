@@ -19,7 +19,7 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder> {
         ViewHolder(View itemView){
             super(itemView);
 
-            textView1 = itemView.findViewById(R.id.text1);
+            textView1 = itemView.findViewById(R.id.fragment2_text1);
         }
     }
 
