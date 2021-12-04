@@ -71,6 +71,7 @@ public class Adapter1 extends RecyclerView.Adapter<Adapter1.ViewHolder> {
         mData = dday;
         notifyDataSetChanged();
     }
+
     String getDoDay(Date today,String start) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyymmdd");
         String formatedNow = formatter.format(today);
