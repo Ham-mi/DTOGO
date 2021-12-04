@@ -25,6 +25,10 @@ public class Todo {
         return number;
     }
 
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
     public int getState() {
         return state;
     }

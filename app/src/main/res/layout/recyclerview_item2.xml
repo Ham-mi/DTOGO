@@ -4,46 +4,50 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:padding="13dp">
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/fragment2_state_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/baseline_local_florist_24"
-        app:tint="#FFFFFF"
-        app:layout_consrtrainLeft_toLeftOf="parent"
-        app:layout_consrtrainTop_toTopOf="parent"
-        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/fragment2_state_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/baseline_crop_square_24"
+            app:tint="@color/colorBlue" />
+
+        <TextView
+            android:id="@+id/fragment2_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|start"
+            android:text="test"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/fragment2_D_Day"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="+"
+            android:textColor="#000000"
+            android:textSize="32dp" />
+
+        <ImageView
+            android:id="@+id/fragment2_next_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/baseline_chevron_right_24"
+            app:tint="#591F1F" />
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/fragment2_text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="30"
-        android:textSize="32sp"
-        app:layout_consrtrainLeft_toRightOf="@id/fragment2_state_icon"
-        app:layout_consrtrainRight_toRightOf="parent"
-        app:layout_consrtrainTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/fragment2_D_Day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="10"
-        android:textColor="#000000"
-        android:textSize="32dp" />
-
-    <ImageView
-        android:id="@+id/fragment2_next_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/baseline_local_florist_24"
-        app:tint="#FFFFFF"/>
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000" />
 
 
 </LinearLayout>

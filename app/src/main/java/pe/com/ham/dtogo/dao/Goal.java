@@ -32,6 +32,10 @@ public class Goal {
         return number;
     }
 
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
     public String getTitle() {
         return title;
     }

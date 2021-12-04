@@ -25,6 +25,10 @@ public class Dday {
     @ColumnInfo(defaultValue = "0") @NotNull
     private int use; // boolean 0(사용),1(종료)
 
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
     public int getNumber(){
         return number;
     }
