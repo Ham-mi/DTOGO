@@ -20,8 +20,8 @@ public class Dday {
     private String back_color; // 배경 색상 7자 제한
     @ColumnInfo(defaultValue = "#FFFFFF") @NotNull
     private String text_color; // 글자 색상 7자 제한
-    @ColumnInfo(defaultValue = "baseline_local_florist_24") @NotNull
-    private String icon; // 아이콘 50자 제한
+    @ColumnInfo(defaultValue = "700102") @NotNull
+    private int icon; // drawable 고유 번호
     @ColumnInfo(defaultValue = "0") @NotNull
     private int use; // boolean 0(사용),1(종료)
 
@@ -68,10 +68,11 @@ public class Dday {
         this.text_color = text_color;
     }
 
-    public String getIcon(){
+    public int getIcon() {
         return icon;
     }
-    public void setIcon(String icon){
+
+    public void setIcon(int icon) {
         this.icon = icon;
     }
 

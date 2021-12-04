@@ -1,6 +1,9 @@
 package pe.com.ham.dtogo;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,13 +11,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.SimpleFormatter;
+
+import pe.com.ham.dtogo.dao.Dday;
 
 public class Adapter1 extends RecyclerView.Adapter<Adapter1.ViewHolder> {
 
-    private ArrayList<String> mData = null;
+    private final LayoutInflater mInflater;
+    private List<Dday> mData = null;
+    private Date today = new Date();
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView icon;
@@ -32,16 +45,13 @@ public class Adapter1 extends RecyclerView.Adapter<Adapter1.ViewHolder> {
         }
     }
 
-    Adapter1(ArrayList<String> list) {
-        mData = null;
+    Adapter1(Context context) {
+        mInflater = LayoutInflater.from(context);
     }
 
     @Override
     public Adapter1.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = parent.getContext() ;
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) ;
-
-        View view = inflater.inflate(R.layout.recyclerview_item1, parent, false) ;
+        View view = mInflater.inflate(R.layout.recyclerview_item1, parent, false) ;
         Adapter1.ViewHolder vh = new Adapter1.ViewHolder(view) ;
 
         return vh ;
@@ -49,12 +59,31 @@ public class Adapter1 extends RecyclerView.Adapter<Adapter1.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull Adapter1.ViewHolder holder, int position) {
-        String text = mData.get(position) ;
-        holder.title.setText(text) ;
+        if(mData != null){
+            Dday current = mData.get(position);
+            holder.title.setText(current.getTitle());
+            holder.icon.setImageResource(current.getIcon());
+            holder.start_date.setText(getDoDay(today,current.getDate()));
+        }
+    }
+
+    void setmData(List<Dday> dday){
+        mData = dday;
+        notifyDataSetChanged();
+    }
+    String getDoDay(Date today,String start) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyymmdd");
+        String formatedNow = formatter.format(today);
+        int tmp = Integer.parseInt(formatedNow) - Integer.parseInt(start);
+        return tmp + "일";
     }
 
     @Override
     public int getItemCount() {
+        if(mData != null) {
+            return mData.size();
+        }else{
         return 0 ;
+        }
     }
 }

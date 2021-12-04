@@ -9,23 +9,26 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Fragment1 extends Fragment {
-    UsingDB db;
+import pe.com.ham.dtogo.dao.Dday;
+import pe.com.ham.dtogo.dao.DdayViewModel;
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        db = (UsingDB) getActivity();
-    }
+public class Fragment1 extends Fragment implements ViewModelStoreOwner{
+    private DdayViewModel mDdayViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment1,container,false);
+
+        mDdayViewModel = new ViewModelProvider(this).get(DdayViewModel.class);
 
         ArrayList<String> list = new ArrayList<>();
         // 리사이클러뷰에 LinearLayoutManager 객체 지정.
@@ -33,7 +36,15 @@ public class Fragment1 extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext())) ;
 
         // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
-        Adapter1 adapter = new Adapter1(list) ;
+        Adapter1 adapter = new Adapter1(this.getContext()) ;
+
+        mDdayViewModel.getmAllDday().observe(getViewLifecycleOwner(), new Observer<List<Dday>>() {
+            @Override
+            public void onChanged(List<Dday> ddays) {
+                adapter.setmData(ddays);
+            }
+        });
+
         recyclerView.setAdapter(adapter) ;
 
         return view;
