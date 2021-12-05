@@ -30,7 +30,6 @@ public class Fragment1 extends Fragment implements ViewModelStoreOwner{
 
         mDdayViewModel = new ViewModelProvider(this).get(DdayViewModel.class);
 
-        ArrayList<String> list = new ArrayList<>();
         // 리사이클러뷰에 LinearLayoutManager 객체 지정.
         RecyclerView recyclerView = view.findViewById(R.id.recycler1) ;
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext())) ;
