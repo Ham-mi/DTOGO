@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Intent1_save">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +32,8 @@
             android:layout_weight="1"
             android:text="D-Day 신규등록/수정"
             android:textColor="@color/colorBlack"
-            android:textSize="26sp" />
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textSave"
@@ -39,24 +42,287 @@
             android:layout_marginStart="10dp"
             android:text="저장"
             android:textColor="@color/colorBlue"
-            android:textSize="26sp" />
+            android:textSize="26sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:minHeight="48dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/view_corner3"
+            android:ems="10"
+            android:hint="디데이 제목을 입력하세요"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:backgroundTint="#9F9F9F"
+            android:gravity="center"
+            android:insetLeft="3dp"
+            android:insetTop="3dp"
+            android:insetRight="3dp"
+            android:insetBottom="3dp"
+            android:maxWidth="48dip"
+            android:minWidth="48dip"
+            android:minHeight="48dip"
+            android:padding="0dp"
+            app:icon="@drawable/outline_more_horiz_24"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="30dp"
+            app:iconTint="#555555"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="계산방법"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/linearCalc1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/view_corner2_thin"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textCalc1_M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="날짜수"
+                android:textColor="@color/colorBlue"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textCalc1_S"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="커플기념일 등\n(1일 부터 시작)"
+                android:textColor="@color/colorBlue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearCalc2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/view_corner2_thin"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textCalc2_M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="디데이"
+                android:textColor="@color/colorBlue"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textCalc2_S"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="수능 시험 등\n(0일부터 시작)"
+                android:textColor="@color/colorBlue" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/intent_line1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="15dp"
+        android:background="#9F9F9F" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editTitle"
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/view_corner3"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:padding="10dp"
-            android:text="test 입력입니다."
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="날짜"
             android:textColor="@color/colorBlack"
-            android:textSize="20sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textDate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="TESTDATE"
+            android:textColor="@color/colorBlue"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/dateClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:backgroundTint="#C8C8C8"
+        android:maxHeight="35dp"
+        android:minHeight="35dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="달력으로 보기"
+        android:textColor="#4C4C4C"
+        android:textSize="12sp"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner" />
+
+    <TextView
+        android:id="@+id/intent_line2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="15dp"
+        android:background="#9F9F9F" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="색상"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textSpace1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="배경"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/textColor1_B"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/view_common2"
+                    android:backgroundTint="@color/colorBlue" />
+
+                <TextView
+                    android:id="@+id/textColor1_T"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="#658DC6"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="글자"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/textColor2_B"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/view_common2"
+                    android:backgroundTint="@color/white" />
+
+                <TextView
+                    android:id="@+id/textColor2_T"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="#FFFFFF"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </LinearLayout>

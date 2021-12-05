@@ -20,7 +20,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import pe.com.ham.dtogo.dao.AppDatabase;
 
-public class MainActivity extends AppCompatActivity implements UsingDB{
+public class MainActivity extends AppCompatActivity{
 
     Toolbar toolbar;
 
@@ -100,23 +100,4 @@ public class MainActivity extends AppCompatActivity implements UsingDB{
         });
     }
 
-    @Override
-    public void item1_select() {
-
-    }
-
-    @Override
-    public void item1_insert() {
-
-    }
-
-    @Override
-    public void item1_delete() {
-
-    }
-
-    @Override
-    public void item1_update() {
-
-    }
 }
