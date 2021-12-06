@@ -12,4 +12,5 @@
     <color name="colorRed">#ff0000</color>
     <color name="colorBlack">#102336</color>
     <color name="colorBlueActive">#2C4565</color>
+    <color name="background">#303030</color>
 </resources>
