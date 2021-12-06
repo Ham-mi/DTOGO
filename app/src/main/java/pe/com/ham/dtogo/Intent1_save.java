@@ -123,7 +123,7 @@ public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwn
         
         //초기 셋팅
         cal.set(cYear,cMonth,cDay);
-        cShow = String.format(cYear+"."+cMonth+"."+cDay+"("+cal.getDisplayName(Calendar.DAY_OF_WEEK,Calendar.SHORT, Locale.KOREAN)+")");
+        cShow = String.format(cYear+"."+(cMonth+1)+"."+cDay+"("+cal.getDisplayName(Calendar.DAY_OF_WEEK,Calendar.SHORT, Locale.KOREAN)+")");
         textDate.setText(cShow);
         
         // datePicker변경시 셋팅
@@ -200,7 +200,7 @@ public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwn
                 Dday dday = new Dday();
                 dday.setTitle(editTitle.getText().toString());
                 dday.setCalc(calc);
-                dday.setDate(String.format(datePicker.getYear()+""+datePicker.getMonth()+""+datePicker.getDayOfMonth()));
+                dday.setDate(String.format(datePicker.getYear()+""+(datePicker.getMonth())+""+datePicker.getDayOfMonth()));
                 dday.setBack_color(textColor1_T.getText().toString());
                 dday.setText_color(textColor2_T.getText().toString());
                 dday.setIcon(0);
