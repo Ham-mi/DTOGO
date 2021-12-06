@@ -25,6 +25,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 
 import com.skydoves.colorpickerview.ColorEnvelope;
 import com.skydoves.colorpickerview.ColorPickerDialog;
@@ -38,7 +40,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class Intent1_save extends AppCompatActivity {
+import pe.com.ham.dtogo.dao.Dday;
+import pe.com.ham.dtogo.dao.DdayViewModel;
+
+public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwner {
+    private DdayViewModel ddayViewModel;
+
     private ImageView imageBack;
     private TextView textSave;
     private EditText editTitle;
@@ -79,6 +86,7 @@ public class Intent1_save extends AppCompatActivity {
         linearColor1 = findViewById(R.id.linearColor1); linearColor2 = findViewById(R.id.linearColor2);
         textColor1_B = findViewById(R.id.textColor1_B); textColor1_T = findViewById(R.id.textColor1_T);
         textColor2_B = findViewById(R.id.textColor2_B); textColor2_T = findViewById(R.id.textColor2_T);
+        ddayViewModel = new ViewModelProvider(this).get(DdayViewModel.class);
 
 
         //되돌아가기 (화면전환)
@@ -183,6 +191,23 @@ public class Intent1_save extends AppCompatActivity {
             colorPickerView.setFlagView(new CustomFlag(this,R.layout.layout_flag));
 
             builder.show();
+        });
+
+
+        textSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dday dday = new Dday();
+                dday.setTitle(editTitle.getText().toString());
+                dday.setCalc(calc);
+                dday.setDate(String.format(datePicker.getYear()+""+datePicker.getMonth()+""+datePicker.getDayOfMonth()));
+                dday.setBack_color(textColor1_T.getText().toString());
+                dday.setText_color(textColor2_T.getText().toString());
+                dday.setIcon(0);
+                dday.setUse(0);
+
+                ddayViewModel.insertDday(dday);
+            }
         });
 
     }

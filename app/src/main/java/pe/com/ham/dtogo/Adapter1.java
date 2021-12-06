@@ -39,9 +39,9 @@ public class Adapter1 extends RecyclerView.Adapter<Adapter1.ViewHolder> {
             super(itemView);
 
             icon = itemView.findViewById(R.id.item1_icon);
-            title = itemView.findViewById(R.id.textView);
+            title = itemView.findViewById(R.id.item1_title);
             start_date = itemView.findViewById(R.id.item1_start_date);
-            now_date = itemView.findViewById(R.id.TextView3);
+            now_date = itemView.findViewById(R.id.item1_now_date);
         }
     }
 
@@ -63,7 +63,8 @@ public class Adapter1 extends RecyclerView.Adapter<Adapter1.ViewHolder> {
             Dday current = mData.get(position);
             holder.title.setText(current.getTitle());
             holder.icon.setImageResource(current.getIcon());
-            holder.start_date.setText(getDoDay(today,current.getDate()));
+            holder.start_date.setText(current.getDate());
+            holder.now_date.setText(getDoDay(today,current.getDate()));
         }
     }
 
