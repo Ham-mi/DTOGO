@@ -3,4 +3,21 @@
     <string name="d_day">D-DAY</string>
     <string name="todo">TODO</string>
     <string name="goal">목표달성</string>
+    <string name="CalcDate">날짜수</string>
+    <string name="DdayInsertUpdate">D-Day 신규등록/수정</string>
+    <string name="ShowCalander">달력으로 보기</string>
+    <string name="testdate">TESTDATE</string>
+    <string name="Date">날짜</string>
+    <string name="Color">색상</string>
+    <string name="Background">배경</string>
+    <string name="Color_658dc6">#658DC6</string>
+    <string name="CalcDday">디데이</string>
+    <string name="CalcDateET">커플기념일 등\n(1일 부터 시작)</string>
+    <string name="CalcDdayET">수능 시험 등\n(0일부터 시작)</string>
+    <string name="Calc">계산방법</string>
+    <string name="EditShow">디데이 제목을 입력하세요</string>
+    <string name="Text">글자</string>
+    <string name="Color_ffffff">#FFFFFF</string>
+    <string name="back_show">뒤로가기</string>
+    <string name="Save">저장</string>
 </resources>

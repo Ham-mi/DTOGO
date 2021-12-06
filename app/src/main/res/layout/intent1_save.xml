@@ -17,20 +17,21 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageBack"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="10dp"
+            android:contentDescription="@string/back_show"
             android:minWidth="35dp"
             app:srcCompat="@drawable/outline_arrow_back_24"
             app:tint="@color/colorBlack" />
 
         <TextView
             android:id="@+id/textShow"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="D-Day 신규등록/수정"
+            android:text="@string/DdayInsertUpdate"
             android:textColor="@color/colorBlack"
             android:textSize="26sp"
             android:textStyle="bold" />
@@ -40,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="저장"
+            android:text="@string/Save"
             android:textColor="@color/colorBlue"
             android:textSize="26sp"
             android:textStyle="bold" />
@@ -55,12 +56,12 @@
 
         <EditText
             android:id="@+id/editTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/view_corner3"
             android:ems="10"
-            android:hint="디데이 제목을 입력하세요"
+            android:hint="@string/EditShow"
             android:inputType="textPersonName"
             android:padding="10dp"
             android:textColor="@color/colorBlack"
@@ -94,7 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="계산방법"
+        android:text="@string/Calc"
         android:textColor="@color/colorBlack"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -103,7 +104,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:id="@+id/linearCalc1"
@@ -121,7 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="날짜수"
+                android:text="@string/CalcDate"
                 android:textColor="@color/colorBlue"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -131,7 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="커플기념일 등\n(1일 부터 시작)"
+                android:text="@string/CalcDateET"
                 android:textColor="@color/colorBlue" />
         </LinearLayout>
 
@@ -151,7 +153,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="디데이"
+                android:text="@string/CalcDday"
                 android:textColor="@color/colorBlue"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -161,7 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="수능 시험 등\n(0일부터 시작)"
+                android:text="@string/CalcDdayET"
                 android:textColor="@color/colorBlue" />
         </LinearLayout>
 
@@ -181,10 +183,10 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="날짜"
+            android:text="@string/Date"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -193,7 +195,7 @@
             android:id="@+id/textDate"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="TESTDATE"
+            android:text="@string/testdate"
             android:textColor="@color/colorBlue"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -210,7 +212,7 @@
         android:minHeight="35dp"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
-        android:text="달력으로 보기"
+        android:text="@string/ShowCalander"
         android:textColor="#4C4C4C"
         android:textSize="12sp"
         tools:ignore="TouchTargetSizeCheck" />
@@ -234,7 +236,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="색상"
+        android:text="@string/Color"
         android:textColor="@color/colorBlack"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -257,16 +259,17 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/linearColor1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textView11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="배경"
+                    android:text="@string/Background"
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -283,13 +286,14 @@
                     android:id="@+id/textColor1_T"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="#658DC6"
+                    android:text="@string/Color_658dc6"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearColor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -298,7 +302,7 @@
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="글자"
+                    android:text="@string/Text"
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -315,7 +319,7 @@
                     android:id="@+id/textColor2_T"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="#FFFFFF"
+                    android:text="@string/Color_ffffff"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp"
                     android:textStyle="bold" />
