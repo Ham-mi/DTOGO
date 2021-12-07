@@ -6,6 +6,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +22,10 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.maltaisn.icondialog.data.Icon;
+import com.maltaisn.icondialog.pack.IconPack;
+import com.maltaisn.icondialog.pack.IconPackLoader;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -46,6 +51,7 @@ public class Adapter1 extends RecyclerView.Adapter<Adapter1.ViewHolder> {
         TextView title;
         TextView start_date;
         TextView now_date;
+
 
         ViewHolder(View itemView){
             super(itemView);
@@ -88,8 +94,19 @@ public class Adapter1 extends RecyclerView.Adapter<Adapter1.ViewHolder> {
     public void onBindViewHolder(@NonNull Adapter1.ViewHolder holder, int position) {
         if(mData != null){
             Dday current = mData.get(position);
+            Log.d("ICON", "onBindViewHolder: " + current.getIcon());
             holder.title.setText(current.getTitle());
-            holder.icon.setImageResource(current.getIcon());
+
+            if(current.getIcon()!=0) {
+                IconPack iconPack = new IconPack();
+                Icon icon = iconPack.getIcon(current.getIcon());
+                if(icon != null) {
+                    Drawable drawable = icon.getDrawable();
+                    drawable.setColorFilter(Color.parseColor("#555555"), PorterDuff.Mode.SRC_ATOP);
+
+                    holder.icon.setImageDrawable(drawable);
+                }
+            }
             holder.start_date.setText(current.getDate());
             holder.now_date.setText(getDoDay(current.getDate()));
             ViewCompat.setBackgroundTintList(holder.back_color, ColorStateList.valueOf(Color.parseColor(current.getBack_color())));
