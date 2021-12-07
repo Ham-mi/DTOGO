@@ -5,6 +5,7 @@
     <string name="goal">목표달성</string>
     <string name="CalcDate">날짜수</string>
     <string name="DdayInsertUpdate">D-Day 신규등록/수정</string>
+    <string name="GoalInsertUpdate">목표달성 신규등록/수정</string>
     <string name="ShowCalander">달력으로 보기</string>
     <string name="testdate">TESTDATE</string>
     <string name="Date">날짜</string>

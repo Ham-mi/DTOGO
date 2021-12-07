@@ -3,12 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/baseline_add_20.xml" value="0.38229166666666664" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/baseline_add_24.xml" value="0.38229166666666664" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/baseline_check_24.xml" value="0.38229166666666664" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/baseline_chevron_right_24.xml" value="0.38229166666666664" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/baseline_close_24.xml" value="0.38229166666666664" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/outline_arrow_back_24.xml" value="0.290625" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/outline_arrow_forward_24.xml" value="0.290625" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/view_corner3.xml" value="0.290625" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/fragment1.xml" value="0.36614583333333334" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/fragment3.xml" value="0.16590678824721378" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/goal_1.xml" value="0.2046875" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/intent1_save.xml" value="0.23958333333333334" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/layout_flag.xml" value="0.36614583333333334" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/recyclerview_item1.xml" value="0.1" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/recyclerview_item2.xml" value="0.1" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/menu/toolbar_menu.xml" value="0.36614583333333334" />
         <entry key="..\:/Github/DTOGO/app/src/main/res/drawable/outline_more_horiz_24.xml" value="0.15925925925925927" />
         <entry key="..\:/Github/DTOGO/app/src/main/res/drawable/view_common1.xml" value="0.15925925925925927" />
         <entry key="..\:/Github/DTOGO/app/src/main/res/drawable/view_common2.xml" value="0.15925925925925927" />
@@ -18,16 +29,13 @@
         <entry key="..\:/Github/DTOGO/app/src/main/res/drawable/view_corner3.xml" value="0.15925925925925927" />
         <entry key="..\:/Github/DTOGO/app/src/main/res/layout/activity_main.xml" value="0.3161231884057971" />
         <entry key="..\:/Github/DTOGO/app/src/main/res/layout/color_picker_view.xml" value="0.27708333333333335" />
-        <entry key="..\:/Github/DTOGO/app/src/main/res/layout/fragment1.xml" value="0.3555253623188406" />
+        <entry key="..\:/Github/DTOGO/app/src/main/res/layout/fragment1.xml" value="0.21875" />
         <entry key="..\:/Github/DTOGO/app/src/main/res/layout/fragment2.xml" value="0.19635416666666666" />
         <entry key="..\:/Github/DTOGO/app/src/main/res/layout/fragment3.xml" value="0.3161231884057971" />
-        <entry key="..\:/Github/DTOGO/app/src/main/res/layout/intent1_save.xml" value="0.3555253623188406" />
+        <entry key="..\:/Github/DTOGO/app/src/main/res/layout/intent1_save.xml" value="0.36186594202898553" />
         <entry key="..\:/Github/DTOGO/app/src/main/res/layout/layout_flag.xml" value="0.27708333333333335" />
-        <entry key="..\:/Github/DTOGO/app/src/main/res/layout/recyclerview_item1.xml" value="0.3555253623188406" />
+        <entry key="..\:/Github/DTOGO/app/src/main/res/layout/recyclerview_item1.xml" value="0.21875" />
         <entry key="..\:/Github/DTOGO/app/src/main/res/menu/toolbar_menu.xml" value="0.19635416666666666" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/DTOGO/app/src/main/res/drawable/baseline_add_24.xml" value="0.1537037037037037" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/DTOGO/app/src/main/res/layout/intent1_save.xml" value="0.3482789855072464" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/DTOGO/app/src/main/res/layout/recyclerview_item1.xml" value="0.3482789855072464" />
         <entry key="..\:/github/DTOGO/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22083333333333333" />
         <entry key="..\:/github/DTOGO/app/src/main/res/drawable/baseline_add_20.xml" value="0.22083333333333333" />
         <entry key="..\:/github/DTOGO/app/src/main/res/drawable/baseline_add_24.xml" value="0.22083333333333333" />
@@ -56,7 +64,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
