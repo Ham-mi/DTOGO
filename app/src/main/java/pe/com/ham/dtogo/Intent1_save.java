@@ -7,6 +7,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.util.Log;
@@ -15,19 +18,27 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 
+import com.maltaisn.icondialog.IconDialog;
+import com.maltaisn.icondialog.IconDialogSettings;
+import com.maltaisn.icondialog.data.Icon;
+import com.maltaisn.icondialog.pack.IconPack;
+import com.maltaisn.iconpack.defaultpack.IconPackDefault;
 import com.skydoves.colorpickerview.ColorEnvelope;
 import com.skydoves.colorpickerview.ColorPickerDialog;
 import com.skydoves.colorpickerview.ColorPickerView;
@@ -38,18 +49,20 @@ import org.w3c.dom.Text;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import pe.com.ham.dtogo.dao.Dday;
 import pe.com.ham.dtogo.dao.DdayViewModel;
 
-public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwner {
+public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwner , IconDialog.Callback{
     private DdayViewModel ddayViewModel;
+    private static final String ICON_DIALOG_TAG = "icon-dialog";
 
     private ImageView imageBack;
     private TextView textSave;
     private EditText editTitle;
-    private Button btnIcon;
+    private ImageButton btnIcon;
     private LinearLayout linearCalc1, linearCalc2;
     private TextView textCalc1_M, textCalc1_S;
     private TextView textCalc2_M, textCalc2_S;
@@ -65,6 +78,7 @@ public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwn
     int cMonth = cal.get(Calendar.MONTH);
     int cDay = cal.get(Calendar.DAY_OF_MONTH);
     String cShow = "";
+    Icon icon;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -88,6 +102,15 @@ public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwn
         textColor2_B = findViewById(R.id.textColor2_B); textColor2_T = findViewById(R.id.textColor2_T);
         ddayViewModel = new ViewModelProvider(this).get(DdayViewModel.class);
 
+        IconDialog dialog = (IconDialog) getSupportFragmentManager().findFragmentByTag(ICON_DIALOG_TAG);
+        IconDialog iconDialog = dialog != null ? dialog : IconDialog.newInstance(new IconDialogSettings.Builder().build());
+
+        btnIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iconDialog.show(getSupportFragmentManager(), ICON_DIALOG_TAG);
+            }
+        });
 
         //되돌아가기 (화면전환)
         imageBack.setOnClickListener(v -> {
@@ -123,7 +146,7 @@ public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwn
         
         //초기 셋팅
         cal.set(cYear,cMonth,cDay);
-        cShow = String.format(cYear+"."+cMonth+"."+cDay+"("+cal.getDisplayName(Calendar.DAY_OF_WEEK,Calendar.SHORT, Locale.KOREAN)+")");
+        cShow = String.format(cYear+"."+(cMonth+1)+"."+cDay+"("+cal.getDisplayName(Calendar.DAY_OF_WEEK,Calendar.SHORT, Locale.KOREAN)+")");
         textDate.setText(cShow);
         
         // datePicker변경시 셋팅
@@ -200,15 +223,39 @@ public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwn
                 Dday dday = new Dday();
                 dday.setTitle(editTitle.getText().toString());
                 dday.setCalc(calc);
-                dday.setDate(String.format(datePicker.getYear()+""+datePicker.getMonth()+""+datePicker.getDayOfMonth()));
+                dday.setDate(String.format(datePicker.getYear()+""+(datePicker.getMonth())+""+datePicker.getDayOfMonth()));
                 dday.setBack_color(textColor1_T.getText().toString());
                 dday.setText_color(textColor2_T.getText().toString());
-                dday.setIcon(0);
+                dday.setIcon(icon.getId());
                 dday.setUse(0);
 
                 ddayViewModel.insertDday(dday);
             }
         });
+
+    }
+
+    @Nullable
+    @Override
+    public IconPack getIconDialogIconPack() {
+        return ((AppIcon) getApplication()).getIconPack();
+    }
+
+    @Override
+    public void onIconDialogCancelled() {
+
+    }
+
+    @Override
+    public void onIconDialogIconsSelected(@NonNull IconDialog iconDialog, @NonNull List<Icon> list) {
+        for( Icon icon : list){
+            this.icon = icon;
+        }
+//        drawable.setColor(Color.parseColor("#555555"));
+        Drawable drawable = icon.getDrawable();
+        drawable.setColorFilter(Color.parseColor("#555555"), PorterDuff.Mode.SRC_ATOP);
+        btnIcon.setImageDrawable(drawable);
+
 
     }
 
@@ -233,7 +280,4 @@ public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwn
             datePicker.updateDate(year,month,dayOfMonth);
         }
     }
-
-
-
 }

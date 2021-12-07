@@ -49,12 +49,22 @@ public class Fragment1 extends Fragment implements ViewModelStoreOwner{
         // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
         Adapter1 adapter = new Adapter1(this.getContext()) ;
 
+        // 아이템 클릭 이벤트를 fragment1 에서 처리
+        adapter.setOnItemClickListener(new Adapter1.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position, Dday dday) {
+                mDdayViewModel.deleteDday(dday);
+            }
+
+        });
+
         mDdayViewModel.getmAllDday().observe(getViewLifecycleOwner(), new Observer<List<Dday>>() {
             @Override
             public void onChanged(List<Dday> ddays) {
                 adapter.setmData(ddays);
             }
         });
+
 
         recyclerView.setAdapter(adapter) ;
 
