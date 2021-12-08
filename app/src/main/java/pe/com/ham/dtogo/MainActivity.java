@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
@@ -22,6 +23,7 @@ import pe.com.ham.dtogo.dao.AppDatabase;
 
 public class MainActivity extends AppCompatActivity{
 
+    AppBarLayout appBar;
     Toolbar toolbar;
 
     private SQLiteDatabase db;
@@ -46,6 +48,22 @@ public class MainActivity extends AppCompatActivity{
 
         // 액션바 설정
 //        toolbar = findViewById(R.id.toolbar);
+//        appBar = findViewById(R.id.appbar);
+//
+//        if (appBar.getLayoutParams() != null) {
+//            CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) appBar.getLayoutParams();
+//            AppBarLayout.Behavior appBarLayoutBehaviour = new AppBarLayout.Behavior();
+//            appBarLayoutBehaviour.setDragCallback(new AppBarLayout.Behavior.DragCallback() {
+//                @Override
+//                public boolean canDrag( AppBarLayout appBarLayout) {
+//                    return false;
+//                }
+//            });
+//            layoutParams.setBehavior(appBarLayoutBehaviour);
+//        }
+
+//        toolbar.scrollTo(0,0);
+//        appBar.setExpanded(true);
 //        setSupportActionBar(toolbar);
 //
 //        //액션바 기본 타이틀 보여지지 않게
