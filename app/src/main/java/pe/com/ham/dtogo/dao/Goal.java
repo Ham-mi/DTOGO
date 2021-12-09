@@ -1,5 +1,8 @@
 package pe.com.ham.dtogo.dao;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -7,7 +10,7 @@ import androidx.room.PrimaryKey;
 import org.jetbrains.annotations.NotNull;
 
 @Entity(tableName = "goal")
-public class Goal {
+public class Goal implements Parcelable {
     @PrimaryKey(autoGenerate = true) private int number;
 
     @ColumnInfo(defaultValue = "") @NotNull
@@ -27,6 +30,31 @@ public class Goal {
     @ColumnInfo(defaultValue = "0") @NotNull
     private int use; // booelan 0(사용),1(종료)
 
+    public Goal() {}
+
+    protected Goal(Parcel in) {
+        number = in.readInt();
+        title = in.readString();
+        state = in.readInt();
+        increase = in.readInt();
+        goalnum = in.readInt();
+        goalunit = in.readInt();
+        goalnow = in.readInt();
+        back_color = in.readString();
+        use = in.readInt();
+    }
+
+    public static final Creator<Goal> CREATOR = new Creator<Goal>() {
+        @Override
+        public Goal createFromParcel(Parcel in) {
+            return new Goal(in);
+        }
+
+        @Override
+        public Goal[] newArray(int size) {
+            return new Goal[size];
+        }
+    };
 
     public int getNumber() {
         return number;
@@ -90,5 +118,23 @@ public class Goal {
     }
     public void setUse(int use) {
         this.use = use;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(number);
+        dest.writeString(title);
+        dest.writeInt(state);
+        dest.writeInt(increase);
+        dest.writeInt(goalnum);
+        dest.writeInt(goalunit);
+        dest.writeInt(goalnow);
+        dest.writeString(back_color);
+        dest.writeInt(use);
     }
 }
