@@ -67,28 +67,6 @@
             android:padding="10dp"
             android:textColor="@color/colorBlack"
             android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/btnIcon_g1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:backgroundTint="#9F9F9F"
-            android:gravity="center"
-            android:insetLeft="3dp"
-            android:insetTop="3dp"
-            android:insetRight="3dp"
-            android:insetBottom="3dp"
-            android:maxWidth="48dip"
-            android:minWidth="48dip"
-            android:minHeight="48dip"
-            android:padding="0dp"
-            app:icon="@drawable/outline_more_horiz_24"
-            app:iconGravity="textStart"
-            app:iconPadding="0dp"
-            app:iconSize="30dp"
-            app:iconTint="#555555"
-            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
     <TextView
@@ -104,13 +82,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         android:baselineAligned="false">
 
         <LinearLayout
             android:id="@+id/selecttext_g1"
-            android:layout_width="86dp"
+            android:layout_width="95dp"
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
@@ -140,7 +118,7 @@
 
         <LinearLayout
             android:id="@+id/selecttext_g2"
-            android:layout_width="wrap_content"
+            android:layout_width="95dp"
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
@@ -170,7 +148,7 @@
 
         <LinearLayout
             android:id="@+id/selecttext_g3"
-            android:layout_width="wrap_content"
+            android:layout_width="95dp"
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
@@ -194,11 +172,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="ex)한달동안\n10시간 공부"
+                android:text="ex) 한달동안\n10시간 공부"
                 android:textColor="@color/colorBlue" />
         </LinearLayout>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/updowntext"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:gravity="center|left"
+            android:text="증가/감소"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/changeClick"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:backgroundTint="#C8C8C8"
+            android:layout_marginEnd="13dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:text="시간 증가"
+            android:textColor="#4C4C4C"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/intent_line1_g1"
@@ -207,20 +219,80 @@
         android:layout_marginBottom="15dp"
         android:background="#9F9F9F" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView2_g1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="세부사항"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginBottom="20dp"
+        android:baselineAligned="false"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView2_g1"
-            android:layout_width="0dp"
+            android:id="@+id/goaltext1"
+            android:layout_width="178dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:gravity="center|left"
+            android:text="목표치"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edit_goalnum"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|center"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/view_corner2_thin"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginBottom="20dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/goaltext2"
+            android:layout_width="178dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:gravity="center|left"
+            android:text="목표단위"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/goalunit_btn"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="세부사항"
+            android:layout_gravity="end"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/view_corner_thin_button"
+            android:text="회"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textSize="15sp" />
+
     </LinearLayout>
 
 
@@ -230,6 +302,7 @@
         android:layout_height="2dp"
         android:layout_marginBottom="15dp"
         android:background="#9F9F9F" />
+
 
     <TextView
         android:id="@+id/textView3_g1"
@@ -296,5 +369,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
 </LinearLayout>
