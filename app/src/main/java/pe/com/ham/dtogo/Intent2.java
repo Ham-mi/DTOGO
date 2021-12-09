@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -22,14 +24,18 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 
 import java.util.Calendar;
 import java.util.Locale;
 
 import pe.com.ham.dtogo.dao.Todo;
+import pe.com.ham.dtogo.dao.TodoViewModel;
 
 
-public class Intent2 extends AppCompatActivity {
+public class Intent2 extends AppCompatActivity implements ViewModelStoreOwner {
+    private TodoViewModel mTodoViewModel;
     InputMethodManager inputMethodManager;
 
     private ImageView imageBack;
@@ -52,6 +58,12 @@ public class Intent2 extends AppCompatActivity {
     int cMinute = cal.get(Calendar.MINUTE);
     String cDateShow = "", cTimeShow = "";
 
+
+    boolean done = false;
+    Parcelable todoP;
+    Todo intentTodo;
+
+
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +81,29 @@ public class Intent2 extends AppCompatActivity {
         timeClick = findViewById(R.id.timeClick);
         timePicker = findViewById(R.id.timePicker);
 
+        mTodoViewModel = new ViewModelProvider(this).get(TodoViewModel.class);
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        Intent intents = getIntent();
+
+        if(intents.getIntExtra("done",-1)== 0){ // 0이면
+            done = true;
+            todoP = intents.getParcelableExtra("todo");
+            intentTodo = (Todo) todoP;
+            if(intentTodo!=null) {
+                Log.d("D" , "not null");
+            }
+
+            editTitle.setText(intentTodo.getMemo());
+            cYear = Integer.parseInt(intentTodo.getDate().substring(0,4));
+            cMonth = Integer.parseInt(intentTodo.getDate().substring(4,6));
+            cDay = Integer.parseInt(intentTodo.getDate().substring(6,8));
+
+            cHour = Integer.parseInt(intentTodo.getTime().substring(0,2)); //0,1
+            cAPM = cHour>12? 1 : 0 ; //0~11 AM 12~23 PM
+            cMinute = Integer.parseInt(intentTodo.getTime().substring(2,4)); //2,3
+
+        }
 
         //되돌아가기 (화면전환)
         imageBack.setOnClickListener(v -> {
@@ -91,6 +125,11 @@ public class Intent2 extends AppCompatActivity {
         String tmpcAPM = (cAPM==1) ? "PM" : "AM";
         cTimeShow = String.format(cHour + ":" + cMinute + " " + tmpcAPM);
         textTime.setText(cTimeShow);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            timePicker.setHour(cHour);
+            timePicker.setMinute(cMinute);
+        }
+
 
         // datePicker변경시 셋팅
         datePicker.init(cYear, cMonth, cDay, (view, year, monthOfYear, dayOfMonth) -> {
@@ -115,7 +154,9 @@ public class Intent2 extends AppCompatActivity {
                 String tmpAPM = (hourOfDay<12) ? "AM" : "PM";
                 int tmpHour = (hourOfDay>12) ? hourOfDay-12 : hourOfDay;
                 String tmpFHour = tmpHour<10 ? "0" + tmpHour : ""+tmpHour;
-                cTimeShow = String.format(tmpFHour + ":" + minute + " " + tmpAPM);
+                String tmpMinute = minute < 10 ? "0" + minute : String.valueOf(minute);
+
+                cTimeShow = String.format(tmpFHour + ":" + tmpMinute + " " + tmpAPM);
                 textTime.setText(cTimeShow);
             }
         });
@@ -135,19 +176,38 @@ public class Intent2 extends AppCompatActivity {
                 }
                 inputMethodManager.hideSoftInputFromWindow(editTitle.getWindowToken(),0);
 
-                Todo todo = new Todo();
-                todo.setMemo(editTitle.getText().toString());
-                todo.setState(1);
+                Todo todo;
 
-                String tmpMonth = datePicker.getMonth()<10 ? "0"+datePicker.getMonth() : String.valueOf(datePicker.getMonth());
-                String tmpDay = datePicker.getDayOfMonth()<10 ? "0"+datePicker.getDayOfMonth() : String.valueOf(datePicker.getDayOfMonth());
+                if(done) {
+                    todo = intentTodo;
+                    if(intentTodo.getNumber()==0){
+                        Toast.makeText(getApplicationContext(),"잘못된 ID 입니다.\n되돌아가 다시 시도해주세요.", Toast.LENGTH_LONG).show();
+                    }
+                }else {
+                    todo = new Todo();
+                    todo.setState(0);
+                    todo.setUse(0);
+                }
 
-                todo.setDate(String.format(datePicker.getYear()+""+tmpMonth+""+tmpDay));
+                if(todo != null) {
+                    todo.setMemo(editTitle.getText().toString());
+                    String tmpMonth = datePicker.getMonth() < 10 ? "0" + datePicker.getMonth() : String.valueOf(datePicker.getMonth());
+                    String tmpDay = datePicker.getDayOfMonth() < 10 ? "0" + datePicker.getDayOfMonth() : String.valueOf(datePicker.getDayOfMonth());
 
-                String tmpHour = timePicker.getHour()<10 ? "0"+timePicker.getHour() : String.valueOf(timePicker.getHour());
-                String tmpMinute = timePicker.getMinute()<10 ? "0"+timePicker.getMinute() : String.valueOf(timePicker.getMinute());
-                todo.setTime(String.format(tmpHour+tmpMinute));
-                todo.setUse(0);
+                    todo.setDate(String.format(datePicker.getYear() + "" + tmpMonth + "" + tmpDay));
+
+                    String tmpHour = timePicker.getHour() < 10 ? "0" + timePicker.getHour() : String.valueOf(timePicker.getHour());
+                    String tmpMinute = timePicker.getMinute() < 10 ? "0" + timePicker.getMinute() : String.valueOf(timePicker.getMinute());
+                    todo.setTime(String.format(tmpHour + tmpMinute));
+
+                    if(done){
+                        mTodoViewModel.updateTodo(todo);
+                    }
+                    else{mTodoViewModel.insertTodo(todo);}
+                    Toast.makeText(getApplicationContext(), "저장되었습니다.", Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+//                    startActivity(intent);
+                }
             }
         });
 

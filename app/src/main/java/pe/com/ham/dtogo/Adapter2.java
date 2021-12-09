@@ -40,9 +40,20 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder> {
 
             state_icon = itemView.findViewById(R.id.fragment2_state_icon);
             state_icon.setOnClickListener(v -> {
+                int pos = getAdapterPosition();
+                Todo todo = null;
+                if(pos != RecyclerView.NO_POSITION){
+                    todo = mData.get(pos);
+                    }
                 state_icon.setImageResource(ImageId[imageNumber]);
                 imageNumber += 1;
                 if(imageNumber == ImageId.length) imageNumber = 0;
+                if(todo!=null) {
+                    todo.setState(imageNumber);
+                    if(mListener!= null) {
+                        mListener.onItemUpdate(todo);
+                    }
+                }
             });
 
             text1 = itemView.findViewById(R.id.fragment2_text1);
@@ -82,7 +93,7 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder> {
             Todo current = mData.get(position);
             holder.text1.setText(current.getMemo());
             holder.state_icon.setImageResource(ImageId[current.getState()]);
-            holder.dday.setText(getDoday(today, current.getDate()));
+//            holder.dday.setText(getDoday(today, current.getDate()));
         }
     }
 
@@ -101,9 +112,10 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder> {
 
     public interface OnItemClickListener{
         void onItemClick(View v, int position, Todo todo);
+        void onItemUpdate(Todo todo);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {this.mListener = listener};
+    public void setOnItemClickListener(OnItemClickListener listener) {this.mListener = listener;}
 
     @Override
     public int getItemCount() {

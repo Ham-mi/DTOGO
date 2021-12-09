@@ -2,6 +2,7 @@ package pe.com.ham.dtogo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,21 @@ public class Fragment2 extends Fragment implements ViewModelStoreOwner {
         adapter2.setOnItemClickListener(new Adapter2.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position, Todo todo) {
-                
+                Intent intent = new Intent(getActivity().getApplicationContext(),Intent2.class);
+                intent.putExtra("todo", (Parcelable) todo);
+                intent.putExtra("done", 0);
+                intent.putExtra("number", todo.getNumber());
+                intent.putExtra("state", todo.getState() );
+                intent.putExtra("memo", todo.getMemo());
+                intent.putExtra("date", todo.getDate());
+                intent.putExtra("time", todo.getTime());
+                intent.putExtra("use",todo.getUse());
+                startActivity(intent);
+            }
+
+            @Override
+            public void onItemUpdate(Todo todo) {
+                mTodoViewModel.updateTodo(todo);
             }
         });
 
