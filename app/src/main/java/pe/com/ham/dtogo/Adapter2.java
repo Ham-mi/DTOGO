@@ -26,6 +26,8 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder> {
     private Date today = new Date();
     int [] ImageId = {R.drawable.baseline_crop_square_24, R.drawable.baseline_check_24, R.drawable.baseline_close_24};
 
+    OnItemClickListener mListener = null;
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView state_icon;
         TextView text1;
@@ -45,6 +47,19 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder> {
 
             text1 = itemView.findViewById(R.id.fragment2_text1);
             dday = itemView.findViewById(R.id.fragment2_D_Day);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = getAdapterPosition();
+                    if(pos != RecyclerView.NO_POSITION){
+                        Todo todo = mData.get(pos);
+                        if(mListener != null) {
+                            mListener.onItemClick(v,pos,todo);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -83,6 +98,12 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder> {
         if(tmp<0){ return "";}
         else { return "+" + tmp; }
     }
+
+    public interface OnItemClickListener{
+        void onItemClick(View v, int position, Todo todo);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {this.mListener = listener};
 
     @Override
     public int getItemCount() {

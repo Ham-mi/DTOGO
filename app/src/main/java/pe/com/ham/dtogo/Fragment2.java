@@ -46,6 +46,13 @@ public class Fragment2 extends Fragment implements ViewModelStoreOwner {
 
         Adapter2 adapter2 = new Adapter2(this.getContext());
 
+        adapter2.setOnItemClickListener(new Adapter2.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position, Todo todo) {
+                
+            }
+        });
+
         mTodoViewModel.getmAllTodo().observe(getViewLifecycleOwner(), new Observer<List<Todo>>() {
             @Override
             public void onChanged(List<Todo> todos) {
