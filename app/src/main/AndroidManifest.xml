@@ -18,8 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Intent1_save">
-
         </activity>
+        <activity android:name=".Intent2" />
+        <activity android:name=".Intent1_show"/>
+
     </application>
 
 </manifest>
