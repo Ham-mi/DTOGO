@@ -17,7 +17,7 @@ public class Todo {
     @ColumnInfo(defaultValue = "00000000") @NotNull
     private String date; // 8자 제한
     @ColumnInfo(defaultValue = "000000") @NotNull
-    private String time; // 6자 제한
+    private String time; // 4자 제한
     @ColumnInfo(defaultValue = "0") @NotNull
     private int use; // boolean 0(사용),(종료)
 

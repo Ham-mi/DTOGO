@@ -154,7 +154,10 @@ public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwn
         
         //초기 셋팅
         cal.set(cYear,cMonth,cDay);
-        cShow = String.format(cYear+"."+(cMonth+1)+"."+cDay+"("+cal.getDisplayName(Calendar.DAY_OF_WEEK,Calendar.SHORT, Locale.KOREAN)+")");
+
+        String tmpcMonth = (cMonth+1)<10 ? "0"+(cMonth+1) : String.valueOf((cMonth+1));
+        String tmpcDay = cDay<10 ? "0"+cDay : String.valueOf(cDay);
+        cShow = String.format(cYear+"."+tmpcMonth+"."+tmpcDay+"("+cal.getDisplayName(Calendar.DAY_OF_WEEK,Calendar.SHORT, Locale.KOREAN)+")");
         textDate.setText(cShow);
         
         // datePicker변경시 셋팅

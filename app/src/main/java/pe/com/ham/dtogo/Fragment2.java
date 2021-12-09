@@ -1,5 +1,6 @@
 package pe.com.ham.dtogo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +25,21 @@ import pe.com.ham.dtogo.dao.TodoViewModel;
 
 public class Fragment2 extends Fragment implements ViewModelStoreOwner {
     private TodoViewModel mTodoViewModel;
+    private FloatingActionButton btn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment2,container,false);
 
         mTodoViewModel = new ViewModelProvider(this).get(TodoViewModel.class);
+        btn = view.findViewById(R.id.fab);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), Intent2.class);
+                startActivity(intent);
+            }
+        });
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler1);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
