@@ -1,5 +1,8 @@
 package pe.com.ham.dtogo.dao;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -7,7 +10,7 @@ import androidx.room.PrimaryKey;
 import org.jetbrains.annotations.NotNull;
 
 @Entity(tableName = "dday")
-public class Dday {
+public class Dday implements Parcelable {
     @PrimaryKey(autoGenerate = true) private int number;
 
     @ColumnInfo(defaultValue = "") @NotNull
@@ -24,6 +27,31 @@ public class Dday {
     private int icon; // drawable 고유 번호
     @ColumnInfo(defaultValue = "0") @NotNull
     private int use; // boolean 0(사용),1(종료)
+
+    public Dday() {}
+
+    protected Dday(Parcel in) {
+        number = in.readInt();
+        title = in.readString();
+        calc = in.readInt();
+        date = in.readString();
+        back_color = in.readString();
+        text_color = in.readString();
+        icon = in.readInt();
+        use = in.readInt();
+    }
+
+    public static final Creator<Dday> CREATOR = new Creator<Dday>() {
+        @Override
+        public Dday createFromParcel(Parcel in) {
+            return new Dday(in);
+        }
+
+        @Override
+        public Dday[] newArray(int size) {
+            return new Dday[size];
+        }
+    };
 
     public void setNumber(int number) {
         this.number = number;
@@ -81,5 +109,22 @@ public class Dday {
     }
     public void setUse(int use){
         this.use = use;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(number);
+        dest.writeString(title);
+        dest.writeInt(calc);
+        dest.writeString(date);
+        dest.writeString(back_color);
+        dest.writeString(text_color);
+        dest.writeInt(icon);
+        dest.writeInt(use);
     }
 }

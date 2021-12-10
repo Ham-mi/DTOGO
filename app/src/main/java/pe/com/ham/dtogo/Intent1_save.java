@@ -12,6 +12,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.InputFilter;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -43,6 +44,7 @@ import com.maltaisn.icondialog.IconDialog;
 import com.maltaisn.icondialog.IconDialogSettings;
 import com.maltaisn.icondialog.data.Icon;
 import com.maltaisn.icondialog.pack.IconPack;
+import com.maltaisn.icondialog.pack.IconPackLoader;
 import com.maltaisn.iconpack.defaultpack.IconPackDefault;
 import com.skydoves.colorpickerview.ColorEnvelope;
 import com.skydoves.colorpickerview.ColorPickerDialog;
@@ -86,6 +88,10 @@ public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwn
     String cShow = "";
     Icon icon;
 
+    boolean done = false;
+    Parcelable ddayP;
+    Dday intentDday;
+
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,6 +119,45 @@ public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwn
         IconDialog dialog = (IconDialog) getSupportFragmentManager().findFragmentByTag(ICON_DIALOG_TAG);
         IconDialog iconDialog = dialog != null ? dialog : IconDialog.newInstance(new IconDialogSettings.Builder().build());
 
+        Intent intents = getIntent();
+
+        if(intents.getIntExtra("done",-1)==0) {
+            done = true;
+            ddayP = intents.getParcelableExtra("dday");
+            intentDday = (Dday) ddayP;
+            if(intentDday != null) {
+                Log.d("D","not null");
+            }
+
+            editTitle.setText(intentDday.getTitle());
+            if(intentDday.getIcon()!=0) {
+                IconPackLoader loader = new IconPackLoader(getApplicationContext());
+                IconPack iconPack;
+                // Create an icon pack and load all drawables.
+                iconPack = IconPackDefault.createDefaultIconPack(loader);
+                iconPack.loadDrawables(loader.getDrawableLoader());
+                Icon icon = iconPack.getIcon(intentDday.getIcon());
+//                Log.d("ICON", "onBindViewHolder: "+current.getIcon() +"" +iconPack.getIcon(current.getIcon()));
+                if(icon != null) {
+                    this.icon = icon;
+                    Drawable drawable = icon.getDrawable();
+                    drawable.setColorFilter(Color.parseColor("#555555"), PorterDuff.Mode.SRC_ATOP);
+
+                    btnIcon.setImageDrawable(drawable);
+                }
+            }
+            cYear = Integer.parseInt(intentDday.getDate().substring(0,4));
+            cMonth = Integer.parseInt(intentDday.getDate().substring(4,6));
+            cDay = Integer.parseInt(intentDday.getDate().substring(6,8));
+
+            textColor1_T.setText(intentDday.getBack_color());
+            textColor2_T.setText(intentDday.getText_color());
+            textColor1_B.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(intentDday.getBack_color())));
+            textColor2_B.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(intentDday.getText_color())));
+
+
+        }
+
         btnIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,9 +175,28 @@ public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwn
         editTitle.setFilters(new InputFilter[] { new InputFilter.LengthFilter(50) });
 
         // Calc 초기화
-        calc = 0;
-        linearCalc1.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorBlue)));
-        textCalc1_M.setTextColor(Color.WHITE);  textCalc1_S.setTextColor(Color.WHITE);
+        if(done){
+            calc = intentDday.getCalc();
+            if(calc==0) {
+                linearCalc1.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorBlue)));
+                textCalc1_M.setTextColor(Color.WHITE);  textCalc1_S.setTextColor(Color.WHITE);
+
+                linearCalc2.setBackgroundTintList(null);
+                textCalc2_M.setTextColor(getResources().getColor(R.color.colorBlue));   textCalc2_S.setTextColor(getResources().getColor(R.color.colorBlue));
+            }else if(calc == 1){
+                linearCalc1.setBackgroundTintList(null);
+                textCalc1_M.setTextColor(getResources().getColor(R.color.colorBlue));  textCalc1_S.setTextColor(getResources().getColor(R.color.colorBlue));
+
+                linearCalc2.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorBlue)));
+                textCalc2_M.setTextColor(Color.WHITE);   textCalc2_S.setTextColor(Color.WHITE);
+            }
+
+        }else {
+            calc = 0;
+            linearCalc1.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorBlue)));
+            textCalc1_M.setTextColor(Color.WHITE);
+            textCalc1_S.setTextColor(Color.WHITE);
+        }
 
         // Calc 선택
         linearCalc1.setOnClickListener(v -> {
@@ -251,20 +315,35 @@ public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwn
                     return;
                 }
                 inputMethodManager.hideSoftInputFromWindow(editTitle.getWindowToken(),0);
-                Dday dday = new Dday();
-                dday.setTitle(editTitle.getText().toString());
-                dday.setCalc(calc);
-                String tmpMonth = datePicker.getMonth()<10 ? "0"+datePicker.getMonth() : String.valueOf(datePicker.getMonth());
-                String tmpDay = datePicker.getDayOfMonth()<10 ? "0"+datePicker.getDayOfMonth() : String.valueOf(datePicker.getDayOfMonth());
-                dday.setDate(String.format(datePicker.getYear()+""+tmpMonth+""+tmpDay));
-                dday.setBack_color(textColor1_T.getText().toString());
-                dday.setText_color(textColor2_T.getText().toString());
-                dday.setIcon(icon.getId());
-//                Log.d("id", "onClick: " + icon.getId());
-                dday.setUse(0);
 
+                Dday dday;
+
+                if (done) {
+                    dday = intentDday;
+                    if(intentDday.getNumber()==0){
+                        Toast.makeText(getApplicationContext(),"잘못된 ID 입니다.\n되돌아가 다시 시도해주세요.", Toast.LENGTH_LONG).show();
+                    }
+                }else {
+                    dday = new Dday();
+                    dday.setUse(0);
+                }
                 if(dday != null ){
-                    ddayViewModel.insertDday(dday);
+                    dday.setTitle(editTitle.getText().toString());
+                    dday.setCalc(calc);
+                    String tmpMonth = datePicker.getMonth()<10 ? "0"+datePicker.getMonth() : String.valueOf(datePicker.getMonth());
+                    String tmpDay = datePicker.getDayOfMonth()<10 ? "0"+datePicker.getDayOfMonth() : String.valueOf(datePicker.getDayOfMonth());
+                    dday.setDate(String.format(datePicker.getYear()+""+tmpMonth+""+tmpDay));
+                    dday.setBack_color(textColor1_T.getText().toString());
+                    dday.setText_color(textColor2_T.getText().toString());
+                    dday.setIcon(icon.getId());
+    //                Log.d("id", "onClick: " + icon.getId());
+
+
+                    if (done) {
+                        ddayViewModel.updateDday(dday);
+                    }else{
+                        ddayViewModel.insertDday(dday);
+                    }
                     Toast.makeText(getApplicationContext(), "저장되었습니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intent);

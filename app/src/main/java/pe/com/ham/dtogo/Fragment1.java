@@ -3,6 +3,7 @@ package pe.com.ham.dtogo;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,9 @@ public class Fragment1 extends Fragment implements ViewModelStoreOwner{
         adapter.setOnItemClickListener(new Adapter1.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position, Dday dday) {
-                mDdayViewModel.deleteDday(dday);
+                Intent intentPop = new Intent(getActivity().getApplicationContext(), Intent1_popup.class);
+                intentPop.putExtra("dday", (Parcelable) dday);
+                startActivity(intentPop);
             }
 
         });
