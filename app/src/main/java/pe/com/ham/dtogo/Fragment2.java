@@ -53,12 +53,6 @@ public class Fragment2 extends Fragment implements ViewModelStoreOwner {
                 Intent intent = new Intent(getActivity().getApplicationContext(),Intent2.class);
                 intent.putExtra("todo", (Parcelable) todo);
                 intent.putExtra("done", 0);
-                intent.putExtra("number", todo.getNumber());
-                intent.putExtra("state", todo.getState() );
-                intent.putExtra("memo", todo.getMemo());
-                intent.putExtra("date", todo.getDate());
-                intent.putExtra("time", todo.getTime());
-                intent.putExtra("use",todo.getUse());
                 startActivity(intent);
             }
 
