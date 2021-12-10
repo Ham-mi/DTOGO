@@ -73,7 +73,7 @@
         android:id="@+id/textView1_g1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         android:text="종류"
         android:textColor="@color/colorBlack"
         android:textSize="16sp"
@@ -180,7 +180,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_marginBottom="10dp"
         android:baselineAligned="false"
         android:orientation="horizontal">
@@ -203,11 +203,11 @@
             android:layout_gravity="end"
             android:backgroundTint="#C8C8C8"
             android:layout_marginEnd="13dp"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
-            android:text="시간 증가"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="수치 증가"
             android:textColor="#4C4C4C"
-            android:textSize="12sp" />
+            android:textSize="15sp" />
 
     </LinearLayout>
 
@@ -223,7 +223,7 @@
         android:id="@+id/textView2_g1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         android:text="세부사항"
         android:textColor="@color/colorBlack"
         android:textSize="16sp"
@@ -310,7 +310,7 @@
         android:id="@+id/textView3_g1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/Color"
         android:textColor="@color/colorBlack"
         android:textSize="16sp"

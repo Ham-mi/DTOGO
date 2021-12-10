@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,13 +24,16 @@ import com.google.android.material.tabs.TabLayout;
 
 import pe.com.ham.dtogo.dao.AppDatabase;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
+
+    public static Context mContext;
     AppBarLayout appBar;
     Toolbar toolbar;
 
     private SQLiteDatabase db;
     private DBHelper dbHelper;
+    private FragmentManager fragmentManager;
 
 
     Fragment1 fragment1;
@@ -71,6 +77,8 @@ public class MainActivity extends AppCompatActivity{
 //        actionBar.setDisplayShowTitleEnabled(false);
         getSupportActionBar().hide();
 
+        fragmentManager = getSupportFragmentManager();
+
         fragment1 = new Fragment1();
         fragment2 = new Fragment2();
         fragment3 = new Fragment3();
@@ -80,6 +88,8 @@ public class MainActivity extends AppCompatActivity{
         tab2 = findViewById(R.id.tab2);
         tab3 = findViewById(R.id.tab3);
 
+        mContext = this;
+
 //        coordinatorLayout = findViewById(R.id.coorLayout);
 
 //        dbHelper = new DBHelper(this);
@@ -88,9 +98,7 @@ public class MainActivity extends AppCompatActivity{
 //        coordinatorLayout.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
 
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
-
+        fragmentManager.beginTransaction().replace(R.id.container, fragment1).commit();
 
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -99,6 +107,7 @@ public class MainActivity extends AppCompatActivity{
                 Log.d("D", "onTabSelected: "+position);
 
                 Fragment selected = null;
+
                 if(position==0) selected = fragment1;
                 else if(position==1) selected = fragment2;
                 else if(position==2) selected = fragment3;
@@ -116,6 +125,29 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
+
+    }
+
+
+    public void onMove1(){
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        TabLayout.Tab tab = tabLayout.getTabAt(0);
+        tab.select();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment1).commit();
+    }
+
+    public void onMove2(){
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        TabLayout.Tab tab = tabLayout.getTabAt(1);
+        tab.select();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
+    }
+
+    public void onMove3(){
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        TabLayout.Tab tab = tabLayout.getTabAt(2);
+        tab.select();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment3).commit();
     }
 
 }

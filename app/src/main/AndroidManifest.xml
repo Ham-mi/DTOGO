@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".Intent2" />
         <activity android:name=".Intent1_show"/>
+        <activity android:name=".Intent3_save"/>
 
     </application>
 

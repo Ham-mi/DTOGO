@@ -7,18 +7,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class Fragment3 extends Fragment {
+import pe.com.ham.dtogo.dao.GoalViewModel;
 
-    private FloatingActionButton btn;
+public class Fragment3 extends Fragment implements ViewModelStoreOwner{
+
+    private GoalViewModel mGoalViewModel;
+    private FloatingActionButton btn1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment3,container,false);
-        btn = view.findViewById(R.id.fab3);
-        btn.setOnClickListener(new View.OnClickListener() {
+
+        mGoalViewModel = new ViewModelProvider(this).get(GoalViewModel.class);
+        btn1 = view.findViewById(R.id.fab3);
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), Intent3_save.class);
