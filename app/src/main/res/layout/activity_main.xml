@@ -22,7 +22,7 @@
             android:background="@color/colorBlue"
             android:minHeight="70dp"
             app:layout_scrollFlags="enterAlways"
-            app:menu="@menu/toolbar_menu"
+
             app:navigationIcon="@drawable/baseline_menu_24"
             app:title="DTOGO"
             app:titleTextColor="@color/colorBlack" />
