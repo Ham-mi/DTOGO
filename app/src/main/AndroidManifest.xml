@@ -24,6 +24,8 @@
         <activity android:name=".Intent3_save"/>
         <activity android:name=".Intent1_popup" android:theme="@style/popupTheme"
             android:screenOrientation="portrait"/>
+        <activity android:name=".Main_popup" android:theme="@style/popupThemeXY"
+            android:screenOrientation="portrait"/>
 
     </application>
 
