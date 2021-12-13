@@ -14,7 +14,7 @@
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/recyclerview_item1">
+        tools:listitem="@layout/recyclerview_item3">
 
     </androidx.recyclerview.widget.RecyclerView>
 

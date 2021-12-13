@@ -10,6 +10,8 @@
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/baseline_close_24.xml" value="0.38229166666666664" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/baseline_edit_24.xml" value="0.20677083333333332" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/baseline_event_available_24.xml" value="0.20677083333333332" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/baseline_remove_24.xml" value="0.19479166666666667" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/button_state.xml" value="0.19479166666666667" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/outline_arrow_back_24.xml" value="0.290625" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/outline_arrow_forward_24.xml" value="0.290625" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/drawable/outline_description_24.xml" value="0.20260416666666667" />
@@ -25,11 +27,13 @@
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/intent1_save.xml" value="0.23958333333333334" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/intent1_show.xml" value="0.18645833333333334" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/intent2.xml" value="0.18645833333333334" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/intent3_detail.xml" value="0.33" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/intent3_popup.xml" value="0.5" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/layout_flag.xml" value="0.36614583333333334" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/main_popup.xml" value="0.17300724637681159" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/recyclerview_item1.xml" value="0.1" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/recyclerview_item2.xml" value="0.18645833333333334" />
-        <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/recyclerview_item3.xml" value="0.19791666666666666" />
+        <entry key="..\:/GitHub/DTOGO/app/src/main/res/layout/recyclerview_item3.xml" value="0.33" />
         <entry key="..\:/GitHub/DTOGO/app/src/main/res/menu/toolbar_menu.xml" value="0.36614583333333334" />
         <entry key="..\:/Github/DTOGO/app/src/main/res/drawable/outline_more_horiz_24.xml" value="0.15925925925925927" />
         <entry key="..\:/Github/DTOGO/app/src/main/res/drawable/view_common1.xml" value="0.15925925925925927" />
