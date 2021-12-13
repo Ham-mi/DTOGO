@@ -22,8 +22,8 @@ public class GoalViewModel extends AndroidViewModel {
         return mAllGoal;
     }
 
-    private void insertGoal(Goal goal) {mRepository.insertGoal(goal);}
-    private void updateGoal(Goal goal) {mRepository.updateGoal(goal);}
-    private void deleteGoal(Goal goal) {mRepository.deleteGoal(goal);}
+    public void insertGoal(Goal goal) {mRepository.insertGoal(goal);}
+    public void updateGoal(Goal goal) {mRepository.updateGoal(goal);}
+    public void deleteGoal(Goal goal) {mRepository.deleteGoal(goal);}
 
 }
