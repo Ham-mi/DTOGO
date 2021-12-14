@@ -77,7 +77,7 @@ public class Adapter3 extends RecyclerView.Adapter<Adapter3.ViewHolder> {
             Goal current = mGData.get(position);
 //            Log.d("ICON", "onBindViewHolder: " + current.getIcon());
             holder.name.setText(current.getTitle());
-            holder.number.setText(current.getGoalnum());
+            holder.number.setText(String.valueOf(current.getGoalnum()));
             holder.unit.setText(getUnit(current.getState(), current.getGoalunit()));
             holder.percent.setText(getPercent(current.getGoalnow(), current.getGoalnum()));
             //배경색 변경
@@ -89,30 +89,30 @@ public class Adapter3 extends RecyclerView.Adapter<Adapter3.ViewHolder> {
     String getUnit(int state , int unit){
 
         String un = null;
-        if(state == 0){
-            if(unit == 0){
+        if(state == 1){
+            if(unit == 1){
                 un = "희";
             }
-            else if(unit == 1){
+            else if(unit == 2){
                 un = "개";
             }
             else{
                 un = "장";
             }
         }
-        else if(state == 1){
-            if(unit == 0){
+        else if(state == 2){
+            if(unit == 1){
                 un = "회";
             }
-            else if(unit == 1){
+            else if(unit == 2){
                 un = "번";
             }
         }
-        else if(state == 2){
-            if(unit == 0){
+        else if(state == 3){
+            if(unit == 1){
                 un = "분";
             }
-            else if(unit == 1){
+            else if(unit == 2){
                 un = "일";
             }
             else{
@@ -123,11 +123,15 @@ public class Adapter3 extends RecyclerView.Adapter<Adapter3.ViewHolder> {
     }
 
     String getPercent(int now, int num){
-
-        int pc = num / now * 100;
-        String percent = String.format("("+pc+"%)");
-        return percent;
-
+        if(now == 0){
+            String zero = "(0%)";
+            return zero;
+        }
+        else{
+            int pc = num / now * 100;
+            String percent = String.format("("+pc+"%)");
+            return percent;
+        }
     }
     void setmGData(List<Goal> goal){
         mGData = goal;

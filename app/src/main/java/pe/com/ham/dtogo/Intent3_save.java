@@ -110,9 +110,7 @@ public class Intent3_save extends AppCompatActivity implements ViewModelStoreOwn
             }
 
             editTitle_g1.setText(intentGoal.getTitle());
-
-            edit_goalnum.setText(intentGoal.getGoalnum());
-
+            edit_goalnum.setText(String.valueOf(intentGoal.getGoalnum()));
             textColor1_T_g1.setText(intentGoal.getBack_color());
             textColor1_B_g1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(intentGoal.getBack_color())));
 
