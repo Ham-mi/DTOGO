@@ -201,19 +201,19 @@ public class Intent3_save extends AppCompatActivity implements ViewModelStoreOwn
                     changeClick.setText("시간 감소");
                 }
                 if(unit == 1){
-                    goalunit_btn.setText("분");
+                    goalunit_btn.setText("시간");
                 }
                 else if(unit == 2){
-                    goalunit_btn.setText("일");
+                    goalunit_btn.setText("분");
                 }
                 else{
-                    goalunit_btn.setText("시간");
+                    goalunit_btn.setText("일");
                 }
             }
         }
         else{
             select = 1;
-            updown = 1;
+            updown = 0;
             selecttext_g1.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorBlue)));
             selecttext_g1_1.setTextColor(Color.WHITE); selecttext_g1_2.setTextColor(Color.WHITE);
             changeClick.setText("수치 증가");
@@ -272,25 +272,25 @@ public class Intent3_save extends AppCompatActivity implements ViewModelStoreOwn
             if(select == 1){
                 if(unit == 1){
                     unit = 2;
-                    goalunit_btn.setText("회");
+                    goalunit_btn.setText("개");
                 }
                 else if(unit == 2){
                     unit = 3;
-                    goalunit_btn.setText("개");
+                    goalunit_btn.setText("장");
                 }
                 else{
                     unit = 1;
-                    goalunit_btn.setText("장");
+                    goalunit_btn.setText("회");
                 }
             }
             else if(select == 2){
                 if(unit == 1){
                     unit = 2;
-                    goalunit_btn.setText("회");
+                    goalunit_btn.setText("번");
                 }
                 else if(unit == 2){
                     unit = 1;
-                    goalunit_btn.setText("번");
+                    goalunit_btn.setText("회");
                 }
 
             }

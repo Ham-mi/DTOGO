@@ -1,15 +1,23 @@
 package pe.com.ham.dtogo;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Point;
+import android.os.Build;
+import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +34,8 @@ public class Adapter3 extends RecyclerView.Adapter<Adapter3.ViewHolder> {
     private List<Goal> mGData = null;
 
     OnItemClickListener mGListener = null;
+
+    int width;
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -70,19 +80,35 @@ public class Adapter3 extends RecyclerView.Adapter<Adapter3.ViewHolder> {
         return viewHolder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @SuppressLint("ResourceType")
     @Override
     public void onBindViewHolder(@NonNull Adapter3.ViewHolder holder, int position) {
         if(mGData != null){
             Goal current = mGData.get(position);
-//            Log.d("ICON", "onBindViewHolder: " + current.getIcon());
+            Display display = mInflater.getContext().getDisplay();
+            Point size = new Point();
+            display.getRealSize(size);
+            width = size.x;
             holder.name.setText(current.getTitle());
             holder.number.setText(String.valueOf(current.getGoalnum()));
             holder.unit.setText(getUnit(current.getState(), current.getGoalunit()));
             holder.percent.setText(getPercent(current.getGoalnow(), current.getGoalnum()));
-            //배경색 변경
+            holder.view_color.setLayoutParams(new LinearLayout.LayoutParams(getParams(current.getGoalnow(), current.getGoalnum()), LinearLayout.LayoutParams.MATCH_PARENT));
             ViewCompat.setBackgroundTintList(holder.view_color, ColorStateList.valueOf(Color.parseColor(current.getBack_color())));
 
+        }
+    }
+
+    Integer getParams(int now, int num){
+
+        if(now == 0){
+            return 0;
+        }
+        else{
+            int lg = (int)((double)now/(double)num * width);
+            Log.d("값",String.valueOf(lg));
+            return lg;
         }
     }
 
@@ -91,7 +117,7 @@ public class Adapter3 extends RecyclerView.Adapter<Adapter3.ViewHolder> {
         String un = null;
         if(state == 1){
             if(unit == 1){
-                un = "희";
+                un = "회";
             }
             else if(unit == 2){
                 un = "개";
@@ -110,13 +136,13 @@ public class Adapter3 extends RecyclerView.Adapter<Adapter3.ViewHolder> {
         }
         else if(state == 3){
             if(unit == 1){
-                un = "분";
+                un = "시간";
             }
             else if(unit == 2){
-                un = "일";
+                un = "분";
             }
             else{
-                un = "시간";
+                un = "일";
             }
         }
         return un;
@@ -128,8 +154,9 @@ public class Adapter3 extends RecyclerView.Adapter<Adapter3.ViewHolder> {
             return zero;
         }
         else{
-            int pc = num / now * 100;
-            String percent = String.format("("+pc+"%)");
+            int pc = (int)((double)now/(double)num *100.0);
+            Log.d("값",String.valueOf(pc));
+            String percent = String.format("("+pc+"%%)");
             return percent;
         }
     }
