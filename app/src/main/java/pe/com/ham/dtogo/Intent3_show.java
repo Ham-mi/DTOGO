@@ -33,7 +33,7 @@ import pe.com.ham.dtogo.dao.Goal;
 import pe.com.ham.dtogo.dao.GoalViewModel;
 
 public class Intent3_show extends  AppCompatActivity implements ViewModelStoreOwner{
-    
+
     private GoalViewModel goalViewModel;
     InputMethodManager inputMethodManager;
 
