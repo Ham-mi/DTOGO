@@ -346,6 +346,7 @@ public class Intent1_save extends AppCompatActivity implements ViewModelStoreOwn
                     }
                     Toast.makeText(getApplicationContext(), "저장되었습니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    intent.putExtra("tab",1);
                     startActivity(intent);
                 }
             }
