@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
     TabItem tab1;
     TabItem tab2;
     TabItem tab3;
+    Intent intent;
+
+    int tab = 0;
 
     CoordinatorLayout coordinatorLayout;
 
@@ -57,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
         // 액션바 설정
         toolbar = findViewById(R.id.toolbar);
+        intent = getIntent();
+        tab = intent.getIntExtra("tab", 0);
 //        appBar = findViewById(R.id.appbar);
 //
 //        if (appBar.getLayoutParams() != null) {
@@ -138,6 +143,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if(tab==1) {
+            onMove1();
+        }else if(tab==2){
+            onMove2();
+        }else if(tab==3){
+            onMove3();
+        }else{
+            onMove1();
+        }
 
     }
 

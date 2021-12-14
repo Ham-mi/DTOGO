@@ -118,6 +118,7 @@ public class Intent3_save extends AppCompatActivity implements ViewModelStoreOwn
 
         imageBack_g1.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            intent.putExtra("tab",3);
             startActivity(intent);
         });
 
@@ -406,6 +407,7 @@ public class Intent3_save extends AppCompatActivity implements ViewModelStoreOwn
                     }
                     Toast.makeText(getApplicationContext(), "저장되었습니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    intent.putExtra("tab",3);
                     startActivity(intent);
                 }
             }

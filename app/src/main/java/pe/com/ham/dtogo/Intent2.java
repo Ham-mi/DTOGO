@@ -108,6 +108,7 @@ public class Intent2 extends AppCompatActivity implements ViewModelStoreOwner {
         //되돌아가기 (화면전환)
         imageBack.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            intent.putExtra("tab",2);
             startActivity(intent);
         });
 
@@ -206,6 +207,7 @@ public class Intent2 extends AppCompatActivity implements ViewModelStoreOwner {
                     else{mTodoViewModel.insertTodo(todo);}
                     Toast.makeText(getApplicationContext(), "저장되었습니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    intent.putExtra("tab",2);
                     startActivity(intent);
                 }
             }
