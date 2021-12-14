@@ -29,6 +29,7 @@
             android:layout_weight="1"
             android:gravity="center|start"
             android:text="test"
+            android:textColor="@color/colorBlue"
             android:textSize="32sp" />
 
         <TextView

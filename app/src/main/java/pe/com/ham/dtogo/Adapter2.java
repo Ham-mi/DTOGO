@@ -1,6 +1,9 @@
 package pe.com.ham.dtogo;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +35,7 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder> {
         ImageView state_icon;
         TextView text1;
         TextView dday;
+        ImageView next_icon;
 
         int imageNumber = 0;
 
@@ -39,6 +43,10 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder> {
             super(itemView);
 
             state_icon = itemView.findViewById(R.id.fragment2_state_icon);
+            text1 = itemView.findViewById(R.id.fragment2_text1);
+            dday = itemView.findViewById(R.id.fragment2_D_Day);
+            next_icon = itemView.findViewById(R.id.fragment2_next_icon);
+
             state_icon.setOnClickListener(v -> {
                 int pos = getAdapterPosition();
                 Todo todo = null;
@@ -48,6 +56,30 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder> {
                 state_icon.setImageResource(ImageId[imageNumber]);
                 imageNumber += 1;
                 if(imageNumber == ImageId.length) imageNumber = 0;
+
+                if(imageNumber==0){
+                    state_icon.setImageTintList(ColorStateList.valueOf(mInflater.getContext().getResources().getColor(R.color.colorBlue)));
+                    text1.setTextColor(ColorStateList.valueOf(mInflater.getContext().getResources().getColor(R.color.colorBlue)));
+                    dday.setTextColor(ColorStateList.valueOf(mInflater.getContext().getResources().getColor(R.color.colorBlue)));
+                    next_icon.setImageTintList(ColorStateList.valueOf(mInflater.getContext().getResources().getColor(R.color.colorBlue)));
+
+                    text1.setPaintFlags(0);
+                }else if(imageNumber == 1 ){
+                    state_icon.setImageTintList(ColorStateList.valueOf(mInflater.getContext().getResources().getColor(R.color.colorLightBlue)));
+                    text1.setTextColor(ColorStateList.valueOf(mInflater.getContext().getResources().getColor(R.color.colorLightBlue)));
+                    dday.setTextColor(ColorStateList.valueOf(mInflater.getContext().getResources().getColor(R.color.colorLightBlue)));
+                    next_icon.setImageTintList(ColorStateList.valueOf(mInflater.getContext().getResources().getColor(R.color.colorLightBlue)));
+
+                    text1.setPaintFlags(text1.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+                }else {
+                    state_icon.setImageTintList(ColorStateList.valueOf(mInflater.getContext().getResources().getColor(R.color.colorRed)));
+                    text1.setTextColor(ColorStateList.valueOf(mInflater.getContext().getResources().getColor(R.color.colorRed)));
+                    dday.setTextColor(ColorStateList.valueOf(mInflater.getContext().getResources().getColor(R.color.colorRed)));
+                    next_icon.setImageTintList(ColorStateList.valueOf(mInflater.getContext().getResources().getColor(R.color.colorRed)));
+
+                    text1.setPaintFlags(text1.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+                }
+
                 if(todo!=null) {
                     todo.setState(imageNumber);
                     if(mListener!= null) {
@@ -56,8 +88,7 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder> {
                 }
             });
 
-            text1 = itemView.findViewById(R.id.fragment2_text1);
-            dday = itemView.findViewById(R.id.fragment2_D_Day);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
