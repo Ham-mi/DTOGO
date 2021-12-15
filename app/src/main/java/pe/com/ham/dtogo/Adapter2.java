@@ -30,6 +30,7 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder> {
     int [] ImageId = {R.drawable.baseline_crop_square_24, R.drawable.baseline_check_24, R.drawable.baseline_close_24};
 
     OnItemClickListener mListener = null;
+    OnItemLongClickListener mlListener = null;
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView state_icon;
@@ -102,6 +103,20 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder> {
                     }
                 }
             });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    int pos = getAdapterPosition();
+                    if(pos != RecyclerView.NO_POSITION){
+                        Todo todo = mData.get(pos);
+                        if(mlListener != null) {
+                            mlListener.onItemLongClick(v,pos,todo);
+                        }
+                    }
+                    return false;
+                }
+            });
         }
     }
 
@@ -147,6 +162,12 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder> {
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {this.mListener = listener;}
+
+    public interface OnItemLongClickListener{
+        void onItemLongClick(View v, int position, Todo todo);
+    }
+
+    public void setOnItenLongClickListener(OnItemLongClickListener listener) {this.mlListener = listener;}
 
     @Override
     public int getItemCount() {

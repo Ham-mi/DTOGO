@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -46,6 +47,14 @@ public class Fragment2 extends Fragment implements ViewModelStoreOwner {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         Adapter2 adapter2 = new Adapter2(this.getContext());
+
+        adapter2.setOnItenLongClickListener(new Adapter2.OnItemLongClickListener() {
+            @Override
+            public void onItemLongClick(View v, int position, Todo todo) {
+                mTodoViewModel.deleteTodo(todo);
+                Toast.makeText(getActivity().getApplicationContext(),"삭제되었습니다.",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         adapter2.setOnItemClickListener(new Adapter2.OnItemClickListener() {
             @Override
