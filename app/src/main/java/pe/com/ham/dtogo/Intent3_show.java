@@ -179,9 +179,17 @@ public class Intent3_show extends  AppCompatActivity implements ViewModelStoreOw
                     Toast.makeText(getApplicationContext(),"4자리 이상 설정할 수 없습니다.",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    int gn = Integer.parseInt(edit_goalnum_d.getText().toString());
-                    gn += 1;
-                    edit_goalnum_d.setText(String.valueOf(gn));
+                    if(Integer.parseInt(edit_goalnum_d.getText().toString())==Integer.parseInt(goalnumber1.getText().toString())){
+                        Toast.makeText(getApplicationContext(),"목표치보다 높게 설정할 수 없습니다.",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        int gn = Integer.parseInt(edit_goalnum_d.getText().toString());
+                        gn += 1;
+                        edit_goalnum_d.setText(String.valueOf(gn));
+                    }
+                }
+                if(Integer.parseInt(edit_goalnum_d.getText().toString())==Integer.parseInt(goalnumber1.getText().toString())){
+                    Toast.makeText(getApplicationContext(),"목표치보다 높게 설정할 수 없습니다.",Toast.LENGTH_SHORT).show();
                 }
             }
         });
