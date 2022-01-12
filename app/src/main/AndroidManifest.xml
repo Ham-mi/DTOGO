@@ -30,6 +30,7 @@
         <activity android:name=".Main_popup" android:theme="@style/popupThemeXY"
             android:screenOrientation="portrait"/>
 
+
     </application>
 
 </manifest>
